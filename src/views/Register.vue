@@ -1,0 +1,87 @@
+<template>
+    <div>
+        <cube-form
+        :model="model"
+        :schema="schema"
+        @submit="submitHandler"
+        @reset="resetHandler">
+        </cube-form>
+    </div>
+</template>
+<script>
+export default {
+    data(){
+        return{
+            model:{
+                username:'',
+                password:''
+            },
+            schema:{
+                fields:[
+                    {
+                        type:'input',
+                        modelkey:'username',
+                        label:'用户名',
+                        props:{
+                            placeholder:'请输入用户名'
+                        },
+                        rules:{
+                            required:true,
+                            type:'string',
+                            min:3,
+                            max:15
+                        },
+                        trigger:'blur',
+                        messages:{
+                            required:'用户名不能为空',
+                            min:'用户名长度不能小于3',
+                            max:'用户名长度不能大于15'
+                        }
+                    },
+                    {
+                        type:'input',
+                        modelkey:'password',
+                        label:'密码',
+                        props:{
+                            placeholder:'请输入密码',
+                            type:'password',
+                            eye:{
+                              open:false
+                            }
+                        },
+                        rules:{
+                            required:true
+                        },
+                        trigger:'blur',
+                        messages:{
+                            required:'密码不能为空'
+                        }
+                    },
+                    {
+                        type:'submit',
+                        label:'提交'
+                    },
+                    {
+                        type:'reset',
+                        label:'重置'
+                    }
+                ]
+            }
+        }
+    },
+    methods:{
+        submitHandler(e){
+            e.preventDefault()
+            console.log('我注册了!')
+        },
+        resetHandler(e){
+            console.log('我重置了!')
+        }
+    }
+}
+</script>
+<style lang="stylus" scoped>
+
+</style>
+
+
