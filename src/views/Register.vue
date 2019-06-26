@@ -72,7 +72,11 @@ export default {
     methods:{
         submitHandler(e){
             e.preventDefault()
-            console.log('我注册了!')
+            this.$http.get('/api/register',{params:this.model}).then(res=>{
+                console.log(res.data)
+            }).catch(err=>{
+                console.log(err)
+            })
         },
         resetHandler(e){
             console.log('我重置了!')

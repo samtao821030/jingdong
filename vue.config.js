@@ -9,9 +9,10 @@ module.exports={
                   {username:'cc',password:'123456'}
                 ]
                 
-                app.get('',(req,res)=>{
+                app.get('/api/register',(req,res)=>{
                   const {username,password}=req.query
-                  const userlength = userpool.filter(value=>value.username==username)
+                  const userlength = userpool.filter(value=>value.username==username).length
+                  alert(userlength)
                   if(userlength>0){
                     res.json({
                       success:false,
