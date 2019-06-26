@@ -4,7 +4,27 @@ module.exports={
             port:8090,
             open:true,
             before(app){
+                let userpool=[
+                  {username:'taosm',password:'123456'},
+                  {username:'cc',password:'123456'}
+                ]
                 
+                app.get('',(req,res)=>{
+                  const {username,password}=req.query
+                  const userlength = userpool.filter(value=>value.username==username)
+                  if(userlength>0){
+                    res.json({
+                      success:false,
+                      message:'用户名已存在,注册失败!'
+                    })
+                  }
+                  else{
+                    res.json({
+                      success:true,
+                      message:'注册成功!'
+                    })
+                  }
+                })
             }
         }
     },
