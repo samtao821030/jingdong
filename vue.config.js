@@ -6,7 +6,7 @@ module.exports={
             before(app){
                 let userpool=[
                   {username:'taosm',password:'123456'},
-                  {username:'cc',password}
+                  {username:'cc',password:'123456'}
                 ]
                 
                 app.get('',(req,res)=>{
