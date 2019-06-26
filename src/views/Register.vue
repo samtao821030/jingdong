@@ -3,8 +3,7 @@
         <cube-form
         :model="model"
         :schema="schema"
-        @submit="submitHandler"
-        @reset="resetHandler">
+        @submit="submitHandler">
         </cube-form>
     </div>
 </template>
@@ -59,11 +58,7 @@ export default {
                     },
                     {
                         type:'submit',
-                        label:'提交'
-                    },
-                    {
-                        type:'reset',
-                        label:'重置'
+                        label:'注册'
                     }
                 ]
             }
@@ -72,14 +67,14 @@ export default {
     methods:{
         submitHandler(e){
             e.preventDefault()
-            this.$http.get('/api/register',{params:this.model}).then(res=>{
+            this.$http.get('/api/register',{params:{
+                username:this.model.username,
+                password:this.model.password
+            }}).then(res=>{
                 console.log(res.data)
             }).catch(err=>{
                 console.log(err)
             })
-        },
-        resetHandler(e){
-            console.log('我重置了!')
         }
     }
 }

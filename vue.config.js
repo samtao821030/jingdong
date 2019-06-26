@@ -11,8 +11,8 @@ module.exports={
                 
                 app.get('/api/register',(req,res)=>{
                   const {username,password}=req.query
-                  const userlength = userpool.filter(value=>value.username==username).length
-                  alert(userlength)
+                  const userlength = userpool.filter(v=>v.username==username).length
+                  console.log('userlength:'+userlength)
                   if(userlength>0){
                     res.json({
                       success:false,
